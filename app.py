@@ -89,11 +89,14 @@ def create_3d_visualization(point, axis_start, axis_end, rotated_point=None,
         all_points.extend(intermediate_points)
     
     all_points = np.array(all_points)
-    max_range = np.max(np.ptp(all_points, axis=0)) / 2
+    point_ranges = np.ptp(all_points, axis=0)  # Get range in each dimension
+    max_range = np.max(point_ranges)
     center = np.mean(all_points, axis=0)
     
-    # Set bounds a bit larger than the range of points
-    bounds = max(max_range * 1.5, 3.0)  # At least 3 units wide
+    # Set bounds to fit the points better
+    # Use a smaller padding factor for tighter view
+    padding_factor = 1.2  # Reduced from 1.5 to zoom in more
+    bounds = max(max_range * padding_factor, 2.5)  # At least 2.5 units wide
     
     # Add original point
     fig.add_trace(go.Scatter3d(
@@ -109,7 +112,7 @@ def create_3d_visualization(point, axis_start, axis_end, rotated_point=None,
         y=[axis_start[1], axis_end[1]], 
         z=[axis_start[2], axis_end[2]],
         mode='lines',
-        line=dict(color='green', width=5),
+        line=dict(color='purple', width=6),
         name='Rotation Axis'
     ))
     
