@@ -40,9 +40,9 @@ with st.sidebar:
         axis_start_z = st.number_input("Z₁", value=0.0, step=0.1)
     with col2:
         st.write("Ending Point")
-        axis_end_x = st.number_input("X₂", value=0.0, step=0.1)
+        axis_end_x = st.number_input("X₂", value=1.0, step=0.1)
         axis_end_y = st.number_input("Y₂", value=1.0, step=0.1)
-        axis_end_z = st.number_input("Z₂", value=0.0, step=0.1)
+        axis_end_z = st.number_input("Z₂", value=1.0, step=0.1)
     
     axis_start = np.array([axis_start_x, axis_start_y, axis_start_z])
     axis_end = np.array([axis_end_x, axis_end_y, axis_end_z])
@@ -54,7 +54,7 @@ with st.sidebar:
     
     # Rotation angle
     st.subheader("Rotation Angle")
-    angle_deg = st.slider("Angle (degrees)", min_value=0, max_value=360, value=45, step=5)
+    angle_deg = st.slider("Angle (degrees)", min_value=0, max_value=360, value=180, step=5)
     angle_rad = np.radians(angle_deg)
     
     # Rotation method selection
@@ -67,7 +67,7 @@ with st.sidebar:
     
     # Animation controls
     st.subheader("Animation")
-    animate = st.checkbox("Animate Rotation", value=False)
+    animate = st.checkbox("Animate Rotation", value=True)
     if animate:
         animation_speed = st.slider("Animation Speed", min_value=1, max_value=10, value=5)
         steps = st.slider("Number of Steps", min_value=10, max_value=100, value=30)
@@ -109,7 +109,7 @@ def create_3d_visualization(point, axis_start, axis_end, rotated_point=None,
         y=[axis_start[1], axis_end[1]], 
         z=[axis_start[2], axis_end[2]],
         mode='lines',
-        line=dict(color='green', width=5),
+        line=dict(color='purple', width=5),
         name='Rotation Axis'
     ))
     
