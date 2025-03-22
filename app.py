@@ -344,7 +344,7 @@ st.markdown("""
 <div style="text-align: center; margin-top: 40px; color: #888;">
     Created with Streamlit, NumPy, and Plotly
     <br>
-    <a href="https://github.com/yourusername/3d-rotation-visualizer" target="_blank">
+    <a href="https://github.com/takeaname1o1/PointRotator3D" target="_blank">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20" style="vertical-align: middle;"> 
         View on GitHub
     </a>
